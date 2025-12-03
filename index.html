@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>url redirect - coming soon</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Check for ?url= parameter and redirect
+        const urlParams = new URLSearchParams(window.location.search);
+        const redirectPath = urlParams.get('url');
+        
+        if (redirectPath) {
+            // Remove leading slash if present
+            const cleanPath = redirectPath.startsWith('/') ? redirectPath.substring(1) : redirectPath;
+            window.location.href = `https://platform.makerumble.com/${cleanPath}`;
+        }
+    </script>
 </head>
 <body class="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 min-h-screen flex items-center justify-center p-4">
     <div class="max-w-2xl w-full">
@@ -23,10 +34,15 @@
             </div>
 
             <!-- Description -->
-            <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 shadow-2xl">
+            <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 shadow-2xl space-y-4">
                 <p class="text-lg text-gray-200 leading-relaxed">
                     we're building something new. stay tuned.
                 </p>
+                <div class="pt-4 border-t border-white/10">
+                    <p class="text-sm text-yellow-300/80">
+                        ⚠️ this redirect service is for demonstration purposes only
+                    </p>
+                </div>
             </div>
 
             <!-- Company Info -->
